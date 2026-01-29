@@ -1,248 +1,250 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD Reysha 🍓</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --soft-blue: #bde0fe;
-            --strawberry-pink: #ffafcc;
-            --white: #ffffff;
-            --text: #5b5b5b;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HBD Reysha 🍓</title>
 
-        body {
-            margin: 0;
-            background: #fdf0f4;
-            font-family: 'Quicksand', sans-serif;
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-        /* Animasi Benda Jatuh */
-        .berry {
-            position: fixed;
-            font-size: 25px;
-            z-index: -1;
-            animation: fall linear infinite;
-        }
+<style>
+:root{
+    --soft-blue:#bde0fe;
+    --strawberry-pink:#ffafcc;
+    --text:#5b5b5b;
+}
+body{
+    margin:0;
+    background:#fdf0f4;
+    font-family:'Quicksand',sans-serif;
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+}
+.berry{
+    position:fixed;
+    font-size:25px;
+    z-index:-1;
+    animation:fall linear infinite;
+}
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg);}
+}
+.card{
+    width:90%;
+    max-width:450px;
+    background:rgba(255,255,255,0.9);
+    border-radius:40px;
+    padding:25px;
+    box-shadow:0 20px 50px rgba(255,175,204,0.3);
+    border:6px solid var(--strawberry-pink);
+    text-align:center;
+}
+.profile-img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:5px solid var(--soft-blue);
+    margin-top:-80px;
+    background:white;
+    object-fit:contain;
+}
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:2.8rem;
+    color:#ff5c8a;
+}
 
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
+.tab-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:20px 0;
+}
+.tab-btn{
+    background:var(--soft-blue);
+    border:none;
+    padding:10px 5px;
+    border-radius:15px;
+    color:white;
+    font-weight:bold;
+    font-size:.75rem;
+    cursor:pointer;
+}
+.tab-btn.active{
+    background:#ff5c8a;
+    transform:scale(1.05);
+}
+.content{
+    background:white;
+    border-radius:25px;
+    padding:20px;
+    min-height:220px;
+    border:2px dashed var(--soft-blue);
+}
+.pane{display:none;animation:fadeIn .5s}
+.pane.active{display:block}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-        .card {
-            width: 90%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 40px;
-            padding: 25px;
-            box-shadow: 0 20px 50px rgba(255, 175, 204, 0.3);
-            border: 6px solid var(--strawberry-pink);
-            text-align: center;
-            position: relative;
-        }
+.gift-container{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+.gift-item{
+    font-size:35px;
+    cursor:pointer;
+}
+.gift-item:hover{transform:scale(1.2)}
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 5px solid var(--soft-blue);
-            margin-top: -80px;
-            background: white;
-            object-fit: contain;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            color: #ff5c8a;
-            margin: 10px 0;
-        }
-
-        /* Navigasi Tab */
-        .tab-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .tab-btn {
-            background: var(--soft-blue);
-            border: none;
-            padding: 10px 5px;
-            border-radius: 15px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .tab-btn.active { background: #ff5c8a; transform: scale(1.05); }
-
-        .content {
-            background: white;
-            border-radius: 25px;
-            padding: 20px;
-            min-height: 220px;
-            border: 2px dashed var(--soft-blue);
-        }
-
-        .pane { display: none; animation: fadeIn 0.5s; }
-        .pane.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* Bagian Kado */
-        .gift-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .gift-item {
-            font-size: 35px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .gift-item:hover { transform: scale(1.2); }
-
-        /* Music Player */
-        .music-player {
-            margin-top: 15px;
-            background: #fff0f3;
-            padding: 10px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .play-btn {
-            background: #ff5c8a;
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-    </style>
+.music-player{
+    margin-top:15px;
+    background:#fff0f3;
+    padding:10px;
+    border-radius:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+.play-btn{
+    background:#ff5c8a;
+    border:none;
+    color:white;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:1.2rem;
+    cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="card">
-        <img src="cinamonroll.jpg" class="profile-img" alt="Cinnamoroll Reysha">
-        
-        <h1>Reysha ✨</h1>
+<div class="card">
+<img src="cinamonroll.jpg" class="profile-img">
 
-        <div class="tab-grid">
-            <button class="tab-btn active" onclick="openTab(event, 't1')">Home 🏠</button>
-            <button class="tab-btn" onclick="openTab(event, 't2')">Wishes 🌸</button>
-            <button class="tab-btn" onclick="openTab(event, 't3')">Mood ☁️</button>
-            <button class="tab-btn" onclick="openTab(event, 't4')">Gifts 🎁</button>
-            <button class="tab-btn" onclick="openTab(event, 't5')">Fact 🍓</button>
-            <button class="tab-btn" onclick="openTab(event, 't6')">Note 💌</button>
-        </div>
+<h1>Reysha ✨</h1>
 
-        <div class="content">
-            <div id="t1" class="pane active">
-                <h3>Happy Birthday Reysha!</h3>
-                <p>Selamat ulang tahun! Semoga harimu penuh kebahagiaan dan tawa yang banyak.</p>
-                <span style="font-size: 40px;">🍓🍰🧁</span>
-            </div>
-            
-            <div id="t2" class="pane">
-                <h3>Doa Terbaik:</h3>
-                <ul style="text-align: left; font-size: 0.9rem;">
-                    <li>Makin sukses & pinter ✨</li>
-                    <li>Semua keinginan tercapai 🛍️</li>
-                    <li>Bahagia terus tiap hari 🌈</li>
-                    <li>Sehat selalu ya Reysha! 😇</li>
-                </ul>
-            </div>
+<div class="tab-grid">
+<button class="tab-btn active" onclick="openTab(event,'t1')">Home 🏠</button>
+<button class="tab-btn" onclick="openTab(event,'t2')">Wishes 🌸</button>
+<button class="tab-btn" onclick="openTab(event,'t3')">Mood ☁️</button>
+<button class="tab-btn" onclick="openTab(event,'t4')">Gifts 🎁</button>
+<button class="tab-btn" onclick="openTab(event,'t5')">Fact 🍓</button>
+<button class="tab-btn" onclick="openTab(event,'t6')">Note 💌</button>
+</div>
 
-            <div id="t3" class="pane">
-                <h3>Today's Mood</h3>
-                <p>"Feeling super happy and sweet!"</p>
-                <p style="font-size: 30px;">☁️🌈🍭✨</p>
-            </div>
+<div class="content">
+<div id="t1" class="pane active">
+<h3>Happy Birthday Reysha!</h3>
+<p>Semoga harimu penuh kebahagiaan dan tawa 💕</p>
+<span style="font-size:40px;">🍓🍰🧁</span>
+</div>
 
-            <div id="t4" class="pane">
-                <h3>Buka Kadonya!</h3>
-                <p>Klik kotak hadiahnya satu per satu:</p>
-                <div class="gift-container">
-                    <span class="gift-item" onclick="alert('🎁 Kamu dapat: Tiket Makan Enak!')">🎁</span>
-                    <span class="gift-item" onclick="alert('🛍️ Kamu dapat: Voucher Belanja Virtual!')">🎁</span>
-                    <span class="gift-item" onclick="alert('🍰 Kamu dapat: Kue Strawberry Paling Manis!')">🎁</span>
-                    <span class="gift-item" onclick="alert('💎 Kamu dapat: Predikat Orang Paling Keren Hari Ini!')">🎁</span>
-                </div>
-            </div>
+<div id="t2" class="pane">
+<ul style="text-align:left;font-size:.9rem">
+<li>Makin sukses & pinter ✨</li>
+<li>Semua keinginan tercapai 🛍️</li>
+<li>Bahagia tiap hari 🌈</li>
+<li>Sehat selalu 😇</li>
+</ul>
+</div>
 
-            <div id="t5" class="pane">
-                <h3>Fun Fact:</h3>
-                <p>Hari ini adalah hari resmi sedunia untuk merayakan betapa kerennya Reysha! 🥳</p>
-            </div>
+<div id="t3" class="pane">
+<p>"Feeling super happy and sweet!"</p>
+<p style="font-size:30px;">☁️🌈🍭✨</p>
+</div>
 
-            <div id="t6" class="pane">
-                <h3>Short Note:</h3>
-                <p><i>"Reysha, semangat terus ya! Enjoy your special day. Pokoknya yang terbaik buat kamu And sorry kalo make koding ngucapnya hehe."</i></p>
-                <p style="font-size: 1.5rem;">✨🎈💖</p>
-            </div>
-        </div>
+<div id="t4" class="pane">
+<div class="gift-container">
+<span class="gift-item" onclick="alert('🎁 Tiket Makan Enak, Pake Feeling Aja Kalo Mau Ngerasa Enak!')">🎁</span>
+<span class="gift-item" onclick="alert('🛍️ Voucher Belanja Virtual, Pake Feeling Juga!')">🎁</span>
+<span class="gift-item" onclick="alert('🍰 Kue Strawberry Manis Pake Indra Pengecap Aja kalo Bisa!')">🎁</span>
+<span class="gift-item" onclick="alert('💎 Kamu paling keren hari ini, Ini Baru Bener Nih!')">🎁</span>
+</div>
+</div>
 
-    <script>
-        // Fungsi Ganti Tab
-        function openTab(evt, tabId) {
-            let i, pane, tabBtn;
-            pane = document.getElementsByClassName("pane");
-            for (i = 0; i < pane.length; i++) pane[i].style.display = "none";
-            tabBtn = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tabBtn.length; i++) tabBtn[i].className = tabBtn[i].className.replace(" active", "");
-            document.getElementById(tabId).style.display = "block";
-            evt.currentTarget.className += " active";
+<div id="t5" class="pane">
+<p>Hari ini adalah hari resmi sedunia untuk Reysha 🥳</p>
+</div>
+
+<div id="t6" class="pane">
+<p><i>
+"Reysha, semangat terus ya! Enjoy your special day.
+Pokoknya yang terbaik buat kamu.
+Yang udh 18 tahun aja gak kerasa bentar lagi umur legal. And sorry ya kalo make kodingan awokawok pokoknya tetap semangat aja."
+</i></p>
+<p style="font-size:1.5rem;">✨🎈💖</p>
+</div>
+</div>
+
+<div class="music-player">
+<span style="font-size:12px;font-weight:bold">Putar Aja kalo Mau Mah 🎂</span>
+<button class="play-btn" id="btnPlay" onclick="togglePlay()">▶️</button>
+</div>
+
+</div>
+
+<!-- YouTube Player Hidden -->
+<div style="display:none">
+<div id="ytPlayer"></div>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+let player,isPlaying=false;
+
+function onYouTubeIframeAPIReady(){
+    player=new YT.Player('ytPlayer',{
+        height:'0',
+        width:'0',
+        videoId:'57jZJ2QpKRg',
+        playerVars:{
+            autoplay:0,
+            controls:0,
+            loop:1,
+            playlist:'57jZJ2QpKRg'
         }
+    });
+}
 
-        // Fungsi Audio (Menggunakan audio file agar lebih stabil)
-        const audio = document.getElementById("myAudio");
-        const btn = document.getElementById("btnPlay");
-        
-        function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-                btn.innerHTML = "⏸️";
-            } else {
-                audio.pause();
-                btn.innerHTML = "▶️";
-            }
-        }
+function togglePlay(){
+    const btn=document.getElementById("btnPlay");
+    if(!isPlaying){
+        player.playVideo();
+        btn.innerHTML="⏸️";
+        isPlaying=true;
+    }else{
+        player.pauseVideo();
+        btn.innerHTML="▶️";
+        isPlaying=false;
+    }
+}
 
-        // Animasi Benda Jatuh (Strawberry & Awan)
-        function createBerry() {
-            const berry = document.createElement('div');
-            berry.classList.add('berry');
-            const icons = ['🍓', '☁️', '✨', '🎂'];
-            berry.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            berry.style.left = Math.random() * 100 + "vw";
-            berry.style.top = "-50px";
-            berry.style.animationDuration = (Math.random() * 3 + 2) + "s";
-            document.body.appendChild(berry);
-            setTimeout(() => berry.remove(), 5000);
-        }
-        setInterval(createBerry, 300);
-    </script>
+function openTab(evt,id){
+    document.querySelectorAll('.pane').forEach(p=>p.style.display='none');
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById(id).style.display='block';
+    evt.currentTarget.classList.add('active');
+}
+
+function createBerry(){
+    const b=document.createElement('div');
+    b.className='berry';
+    b.innerHTML=['🍓','☁️','✨','🎂'][Math.floor(Math.random()*4)];
+    b.style.left=Math.random()*100+'vw';
+    b.style.animationDuration=(Math.random()*3+2)+'s';
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),5000);
+}
+setInterval(createBerry,300);
+</script>
+
 </body>
 </html>
